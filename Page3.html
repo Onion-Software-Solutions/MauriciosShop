@@ -1,0 +1,137 @@
+<html>
+
+<header>
+
+<script>
+
+lines=0;
+
+function sad()
+{
+  if( document.getElementById("code").value == "")
+    return;
+  if( document.getElementById("title").value == "" )
+    return;
+  if( document.getElementById("author").value == "" )
+    return;
+  if( document.getElementById("published").value == "" )
+    return;
+  if( document.getElementById("subject").value == "" )
+    return;
+  if( document.getElementById("summary").value == "" )
+    return;
+  if( document.getElementById("photo").value == "" )
+    return;
+
+
+  varid = lines + "a";
+
+  vtmp="<tr id=" + varid + ">";
+
+  vtmp += "<td>" + document.getElementById("code").value + "</td>";
+  vtmp += "<td>" + document.getElementById("title").value + "</td>";
+  vtmp += "<td>" + document.getElementById("author").value + "</td>";
+  vtmp += "<td>" + document.getElementById("published").value + "</td>";
+  vtmp += "<td>" + document.getElementById("subject").value + "</td>";
+  vtmp += "<td>" + document.getElementById("summary").value + "</td>";
+  vtmp += "<td>" + document.getElementById("photo").value + "</td>";
+  vtmp += "<td>" + "<button onclick='eraseline(varid);'>erase</button>" + "</td>";
+
+  vtmp += "</tr>";
+
+  document.getElementById("books").innerHTML += vtmp;
+
+  //lines += 1; this is the same as the line below
+  lines = lines + 1;
+
+  alert( "lines = " + lines );
+
+
+  clear1();
+}
+
+
+
+function eraseline(vid){
+
+
+   resp = confirm("are you sure you want to erase the line = " + vid + "?");
+   if (resp== true)
+   {
+     alert("we will create the function erase here");
+
+     
+
+   }
+
+
+
+}
+
+
+
+
+function clear1() 
+{
+
+/*  response = confirm("are you sure you want to clean?");
+  
+  if( response == true )
+  {
+*/
+    document.getElementById("summary").value="";
+    document.getElementById("subject").value="";
+    document.getElementById("published").value="";
+    document.getElementById("title").value="";
+    document.getElementById("code").value="";
+    document.getElementById("author").value="";
+
+ //}
+
+
+}
+
+
+
+</script>
+
+
+
+
+</header>
+
+<body>
+<h1>Mauricio' shop </h1>
+
+<center>
+<img width="300px" height="400px" src= "C:\Users\mauri\Source\Repos\img\20211003_111338.jpg"/>
+
+
+<table border="10">
+<tr> <td>Code:	      </td><td><input type="text" id="code"/> </td></tr>
+<tr> <td>Title:	      </td><td><input type="text" id="title"/> </td></tr>
+<tr> <td>Author:      </td><td><input type="text" id="author"/> </td></tr>
+<tr> <td>Published by:</td><td><input type="text" id="published"/> </td></tr>
+<tr> <td>Subject:     </td><td><input type="text" id="subject"/> </td></tr>
+<tr> <td>Summary:     </td><td><input type="text" id="summary"/> </td></tr>
+<tr> <td>Photo:	      </td><td><input type="text" id="photo"/> </td></tr>
+</table>
+<br>
+<button onclick="sad();"   > add</button>
+<button onclick="clear1();"> clean</button>
+<br>
+
+
+<Table id="books" border="1" width="490">
+ <tr> <th>Code</th> <th>Title</th> <th>Author</th> <th>Published by</th> <th>Subject</th> <th>Summary</th> <th>Photo</th></tr>
+<!-- 
+ <tr> <td id="ccode"></td><td id="ctitle"></td> <td id="cauthor"></td><td id="cpublished"></td><td id="csubject"></td><td id="csummary"></td></tr>
+ <tr> <td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+ <tr> <td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+-->
+
+</Table>
+
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<html>
+
+<header>
+
+<script>
+
+function sad()
+{
+  //alert("I am a very sad loaf of bread");
+  //alert( document.getElementById("author").value );
+
+ 
+/*
+  document.getElementById("ccode").innerText  = document.getElementById("author").value;
+  document.getElementById("ccode").innerText  = document.getElementById("code").value;
+  document.getElementById("ctitle").innerText  = document.getElementById("title").value;
+  document.getElementById("cpublished").innerText  = document.getElementById("published").value;
+  document.getElementById("csubject").innerText  = document.getElementById("subject").value;
+  document.getElementById("csummary").innerText  = document.getElementById("summary").value;
+*/
+
+
+if( document.getElementById("code").value == "")
+    return;
+if( document.getElementById("title").value == "" )
+    return;
+if( document.getElementById("author").value == "" )
+    return;
+if( document.getElementById("published").value == "" )
+    return;
+if( document.getElementById("subject").value == "" )
+    return;
+if( document.getElementById("summary").value == "" )
+    return;
+
+
+  vtmp="<tr>";
+
+  vtmp += "<td>" + document.getElementById("code").value + "</td>";`
+  vtmp += "<td>" + document.getElementById("title").value + "</td>";
+  vtmp += "<td>" + document.getElementById("author").value + "</td>";
+  vtmp += "<td>" + document.getElementById("published").value + "</td>";
+  vtmp += "<td>" + document.getElementById("subject").value + "</td>";
+  vtmp += "<td>" + document.getElementById("summary").value + "</td>";
+  vtmp += "<td>" + "<button>erase</button>" + "</td>";
+
+  vtmp += "</tr>";
+
+  document.getElementById("books").innerHTML += vtmp;
+
+  clear1();
+
+
+  
+
+}
+
+
+function clear1() 
+{
+
+/*  response = confirm("are you sure you want to clean?");
+  
+  if( response == true )
+  {
+*/
+    document.getElementById("summary").value="";
+    document.getElementById("subject").value="";
+    document.getElementById("published").value="";
+    document.getElementById("title").value="";
+    document.getElementById("code").value="";
+    document.getElementById("author").value="";
+
+ //}
+
+
+}
+
+
+
+
+
+
+
+</script>
+
+</header>
+
+<body>
+<h1>Mauricio' shop </h1>
+
+<center>
+<img width="300px" height="400px" src= "C:\Users\mauri\Source\Repos\img\20211003_111338.jpg"/>
+
+
+<table border="10">
+<tr> <td>Code:	      </td><td><input type="text" id="code"/> </td></tr>
+<tr> <td>Title:	      </td><td><input type="text" id="title"/> </td></tr>
+<tr> <td>Author:      </td><td><input type="text" id="author"/> </td></tr>
+<tr> <td>Published by:</td><td><input type="text" id="published"/> </td></tr>
+<tr> <td>Subject:     </td><td><input type="text" id="subject"/> </td></tr>
+<tr> <td>Summary:     </td><td><input type="text" id="summary"/> </td></tr>
+</table>
+<br>
+<button onclick="sad();"   > add</button>
+<button onclick="clear1();"> clean</button>
+<br>
+
+
+<Table id="books" border="1" width="490">
+ <tr> <th>Code</th> <th>Title</th> <th>Author</th> <th>Published by</th> <th>Subject</th> <th>Summary</th></tr>
+<!-- 
+ <tr> <td id="ccode"></td><td id="ctitle"></td> <td id="cauthor"></td><td id="cpublished"></td><td id="csubject"></td><td id="csummary"></td></tr>
+ <tr> <td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+ <tr> <td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+-->
+
+</Table>
+
+
+</body>
+</html>
