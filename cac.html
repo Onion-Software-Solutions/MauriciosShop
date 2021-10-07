@@ -1,0 +1,56 @@
+<html>
+<script>
+function show(num){
+
+  //alert("test" + num);
+  document.getElementById("results").innerText += num;
+
+}
+
+function clean(){
+document.getElementById("results").innerText = "";
+}
+
+function run(){
+  
+   temp=document.getElementById("results").innerText;
+
+   cresults= eval(temp);
+
+  document.getElementById("results").innerText = cresults;
+}
+
+</script>
+<body>
+
+<h2>Caculator</h2>
+
+
+<table border="1" width="127" height="30">
+<tr> <td>
+
+<p id="results"></p>
+
+</td> </tr> </table>
+
+<table border="1">
+
+<tr> <td>
+
+<table id="numbers" border="0">
+ <tr> <td> <button onclick="show(1);">1</button> </td> <td><button onclick="show(4);">4</button></td><td><button onclick="show(7);">7</button></td><td><button onclick="show(0);">0</button></td> </tr>
+ <tr> <td> <button onclick="show(2);">2</button> </td><td><button onclick="show(5);">5</button></td><td><button onclick="show(8);">8</button></td><td><button onclick="clean();">clr</button></td> </tr>
+ <tr> <td> <button onclick="show(3);">3</button> </td><td><button onclick="show(6);">6</button></td><td><button onclick="show(9);">9</button></td><td><button onclick="run();">=</button></td> </tr>
+</table>
+<table id="operations" border="0">
+ <tr> <td><button onclick="show('+');">+</button></td><td><button onclick="show('-');">-</button></td><td><button onclick="show('/');">/</button></td><td><button onclick="show('*');">x</button></td> </tr>
+</table>
+
+</td> </tr> </table>
+
+
+
+
+
+</body>
+</html>
