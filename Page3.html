@@ -52,8 +52,10 @@ vtmp += "<td>" + document.getElementById("price").value + "</td>";
   //alert( "lines = " + lines );
 
 
-  books+=1;
-  document.getElementById("numberofbooks").text = books;
+  books += 1;
+  document.getElementById("numberofbooks").innerHTML = books;
+  
+  
   clear1();
 }
 
@@ -114,10 +116,13 @@ document.getElementById("price").value="";
 <center>
 <img width="600px" height="400px" src= "img\book0.jpg"/>
 
-<table id="outside" border="1">
+
+
+<table id="outside" border="1"> <!-- This is the external table -->
 
  <tr><td>
-  <table border="10">
+ 
+  <table border="10"> <!-- This table is inside of the first column of the external table  -->
     <tr> <td>Code:	</td><td><input type="text" id="code"/> </td></tr>
     <tr> <td>Title:	</td><td><input type="text" id="title"/> </td></tr>
     <tr> <td>Author:      </td><td><input type="text" id="author"/> </td></tr>
@@ -131,7 +136,7 @@ document.getElementById("price").value="";
  </td> <td> 
 
 
-        <table border="0">
+        <table border="0"> <!-- This table is inside of the second column of the external table  -->
            <tr><td>Number of books:</td><td> <p id="numberofbooks"> </p> </td></tr>
            <tr><td>Total Price:</td><td>??</td></tr>
         </table>
