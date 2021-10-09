@@ -1,16 +1,34 @@
+<!DOCTYPE html>
 <html>
 
-<header>
+<header><title>MauriciosShop</title>
+
+<script src="C:\Users\marco\Downloads\mauriciosshops.txt"></script> 
+
+
+
 
 <script>
 
+//vtb='<tr><th>Code</th> <th>Title</th> <th>Author</th> <th>Published by</th> <th>Subject</th> <th>Summary</th> <th>Price</th> <th>Photo</th> <th>Action</th></tr><tr> <td>Cod0</td><td>DD</td><td>DD</td><td>DD</td><td>Sports</td><td>DD</td><td>DD</td><td><img src="img/book2.jpg" style="width:60px; height:62px;"></td><td><button onclick="eraseline(\'0a\');">erase</button></td></tr>';
+
+
 lines=0;
-books=0;
+totalbooks=0;
+
+
+function showPhoto()
+{
+  document.getElementById("bookphoto").src =  document.getElementById("photo").value;
+  //document.getElementById("photo").value = "img/" + document.getElementById("cbophotos").value;
+}
+
+
 
 function sad()
 {
-  if( document.getElementById("code").value == "")
-    return;
+  //if( document.getElementById("code").value == "")
+  //  return;
   if( document.getElementById("title").value == "" )
     return;
   if( document.getElementById("author").value == "" )
@@ -26,7 +44,8 @@ if( document.getElementById("price").value == "" )
   if( document.getElementById("photo").value == "" )
     return;
 
-
+  document.getElementById("code").value = "Cod" + lines; 
+   
   varid = lines + "a";
 
   vtmp="<tr id=" + varid + ">";
@@ -37,10 +56,10 @@ if( document.getElementById("price").value == "" )
   vtmp += "<td>" + document.getElementById("published").value + "</td>";
   vtmp += "<td>" + document.getElementById("subject").value + "</td>";
   vtmp += "<td>" + document.getElementById("summary").value + "</td>";
-vtmp += "<td>" + document.getElementById("price").value + "</td>";
+  vtmp += "<td>" + document.getElementById("price").value + "</td>";
   //vtmp += "<td>" + document.getElementById("photo").value + "</td>";
-  vtmp += "<td>" + "<img src='" + document.getElementById("photo").value + "' />" + "</td>";
-  vtmp += "<td>" + "<button onclick='eraseline(varid);'>erase</button>" + "</td>";
+  vtmp += "<td>" + "<img src='" + document.getElementById("photo").value + "' style='width:60px; height:62px;' />" + "</td>";
+  vtmp += "<td>" + "<button onclick=\"eraseline('" + varid + "');\" >erase</button>" + "</td>";
 
   vtmp += "</tr>";
 
@@ -52,8 +71,9 @@ vtmp += "<td>" + document.getElementById("price").value + "</td>";
   //alert( "lines = " + lines );
 
 
-  books += 1;
-  document.getElementById("numberofbooks").innerHTML = books;
+  totalbooks += 1;
+  document.getElementById("numberofbooks").innerHTML = totalbooks;
+  
   
   
   clear1();
@@ -63,14 +83,15 @@ vtmp += "<td>" + document.getElementById("price").value + "</td>";
 
 function eraseline(vid){
 
+   row = document.getElementById(vid).rowIndex;
+   code = document.getElementById(vid).cells[0].innerText
 
-   resp = confirm("are you sure you want to erase the line = " + vid + "?");
+   //resp = confirm("are you sure you want to erase the line = " + vid + "?");
+   resp = confirm("are you sure you want to erase the record code :"+ code + " ?");
    if (resp== true)
    {
-     alert("we will create the function erase here");
-
-     
-
+     //alert("we will create the function erase here");
+      document.getElementById("books").deleteRow(row); 
    }
 
 
@@ -94,13 +115,49 @@ function clear1()
     document.getElementById("title").value="";
     document.getElementById("code").value="";
     document.getElementById("author").value="";
-document.getElementById("price").value="";
+    document.getElementById("price").value="";
 
  //}
 
 
 }
 
+
+function save(){
+
+ //tbl = document.getElementById("books");
+ 
+ vtable_to_save = document.getElementById("books").innerHTML;
+ 
+ //for (let row of tbl.rows) 
+ //{
+ //   vtable_to_save += row.innerText;
+ //}
+ 
+ vtable_to_save = "var vtb='" + vtable_to_save.replaceAll("'","\\'") + "';";
+ 
+ 
+ 
+ 
+ var a = document.createElement('a');
+ a.href = 'data:text/plain;base64,' + btoa(vtable_to_save);
+ a.textContent = 'download';
+ a.download = 'mauriciosshops.txt';
+ a.click();
+
+}
+
+function loadMyData(){
+ 
+ document.getElementById("books").innerHTML = vtb;
+ 
+
+ 
+ totalbooks = document.getElementById("books").rows.length - 1;
+ 
+ document.getElementById("numberofbooks").innerHTML = totalbooks;
+ 
+}
 
 
 </script>
@@ -110,37 +167,68 @@ document.getElementById("price").value="";
 
 </header>
 
-<body>
-<h1>Mauricio' shop </h1>
+<body onload="loadMyData();">
+
+<h1>Mauricio's Book Shop </h1>
 
 <center>
-<img width="600px" height="400px" src= "img\book0.jpg"/>
+<table style="border:1px dotted black;">
+<tr><td>
+<img width="600px" height="400px" src= "img/book0.jpg"/>
+</td></tr>
+</table>
 
 
 
-<table id="outside" border="1"> <!-- This is the external table -->
+<table id="outside" border="0" style="border:1px solid black;"  > <!-- This is the external table -->
 
  <tr><td>
  
   <table border="10"> <!-- This table is inside of the first column of the external table  -->
-    <tr> <td>Code:	</td><td><input type="text" id="code"/> </td></tr>
+    <tr> <td>Code:	</td><td><input type="text" id="code" disabled /> </td></tr>
     <tr> <td>Title:	</td><td><input type="text" id="title"/> </td></tr>
     <tr> <td>Author:      </td><td><input type="text" id="author"/> </td></tr>
     <tr> <td>Published by:</td><td><input type="text" id="published"/> </td></tr>
-    <tr> <td>Subject:     </td><td><input type="text" id="subject"/> </td></tr>
+	<!--  <tr> <td>Subject:     </td><td><input type="text" id="subject"/> </td></tr> -->
+	<tr> <td>Subject:     </td><td>
+
+                                             <select id="subject" >
+                                                   <option value="Games">Games</option>
+                                                   <option value="Adventures">Adventures</option>
+                                                   <option value="Gardem">Gardem</option>
+												   <option value="Sports">Sports</option>
+												   <option value="Other">Other</option>
+                                                </select>
+
+
+	</td></tr> 
+	
     <tr> <td>Summary:     </td><td><input type="text" id="summary"/> </td></tr>
     <tr> <td>Price:       </td><td><input type="text" id="price"/> </td></tr>
-    <tr> <td>Photo:	</td><td><input type="text" id="photo"/> </td></tr>
+    <!-- <tr> <td>Photo:	</td><td><input type="text" id="photo"/> </td></tr> -->
+	<tr> <td>Photo:	</td><td>
+	                        <!-- <input type="text" id="photo"/> -->
+	
+	                                            <select id="photo" onchange="showPhoto();">
+                                                   <option value="img/book1.jpg">Book1</option>
+                                                   <option value="img/book2.jpg">Book2</option>
+                                                   <option value="img/book3.jpg">Book3</option>
+												   <option value="img/book4.jpg">Book4</option>
+												   <option value="img/book5.jpg">Book5</option>
+                                                </select>
+						</td></tr>
+	
   </table>
 
- </td> <td> 
+ </td> <td >
 
-
-        <table border="0"> <!-- This table is inside of the second column of the external table  -->
-           <tr><td>Number of books:</td><td> <p id="numberofbooks"> </p> </td></tr>
-           <tr><td>Total Price:</td><td>??</td></tr>
+        
+        <table border="0" style="width:230px;height:240px;"> <!-- This table is inside of the second column of the external table  -->
+           <tr><td>Books:</td><td> <p id="numberofbooks"> </p> </td></tr>
+           <tr><td>Amount:</td><td>0</td></tr>
+		   <tr><td style="text-align:center" ><img id="bookphoto" src="" /></td></tr>
         </table>
-
+    
     </td> </tr>
 
 </table>
@@ -148,12 +236,13 @@ document.getElementById("price").value="";
 
 
 <br>
-<button onclick="sad();"   > add</button>
-<button onclick="clear1();"> clean</button>
+<button onclick="sad();"   >add</button>
+<button onclick="clear1();">clean</button>
+<button onclick="save();">Save</button>
 <br>
 
 
-<Table id="books" border="1" width="540">
+<table id="books" border="1" width="640">
  <tr> <th>Code</th> <th>Title</th> <th>Author</th> <th>Published by</th> <th>Subject</th> <th>Summary</th> <th>Price</th> <th>Photo</th> <th>Action</th> </tr>
 <!-- 
  <tr> <td id="ccode"></td><td id="ctitle"></td> <td id="cauthor"></td><td id="cpublished"></td><td id="csubject"></td><td id="csummary"></td><td id="cprice"> </tr>
@@ -161,7 +250,7 @@ document.getElementById("price").value="";
  <tr> <td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
 -->
 
-</Table>
+</table>
 
 
 </body>
