@@ -101,6 +101,16 @@ document.getElementById("price").value="";
 
 }
 
+function showsubject()
+{
+  alert( document.getElementById("subject").value   );
+}
+
+function showphoto ()
+{
+  document.getElementById("photo2").src=document.getElementById("photo").value;
+}
+
 
 
 </script>
@@ -127,10 +137,38 @@ document.getElementById("price").value="";
     <tr> <td>Title:	</td><td><input type="text" id="title"/> </td></tr>
     <tr> <td>Author:      </td><td><input type="text" id="author"/> </td></tr>
     <tr> <td>Published by:</td><td><input type="text" id="published"/> </td></tr>
-    <tr> <td>Subject:     </td><td><input type="text" id="subject"/> </td></tr>
+    <tr> <td>Subject:     </td><td>
+	
+	                               <!-- <input type="text" id="subject"/> -->
+								   <select id="subject" onchange="showsubject();">
+								      <option value="Games">Games</option>
+									  <option value="Adventure">Adventure</option>
+									  <option value="Animals">Animals</option>
+									  
+								   </select>
+								   
+								   
+								   </td></tr> 
+	
     <tr> <td>Summary:     </td><td><input type="text" id="summary"/> </td></tr>
     <tr> <td>Price:       </td><td><input type="text" id="price"/> </td></tr>
-    <tr> <td>Photo:	</td><td><input type="text" id="photo"/> </td></tr>
+    <tr> <td>Photo:	</td><td>
+							<!-- <input type="text" id="photo"/> -->
+
+								   <select id="photo" onchange="showphoto();">
+								      <option value="img/book1.jpg">book1</option>
+									  <option value="img/book2.jpg">book2</option>
+									  <option value="img/book3.jpg">book3</option>
+									  <option value="img/book4.jpg">book4</option>
+									  <option value="img/book5.jpg">book5</option>
+									  
+								   </select>
+
+
+
+
+
+							</td></tr>
   </table>
 
  </td> <td> 
@@ -139,6 +177,7 @@ document.getElementById("price").value="";
         <table border="0"> <!-- This table is inside of the second column of the external table  -->
            <tr><td>Number of books:</td><td> <p id="numberofbooks"> </p> </td></tr>
            <tr><td>Total Price:</td><td>??</td></tr>
+		   <tr><td>Photo:</td><td><img id="photo2" src=""/> </td></tr>
         </table>
 
     </td> </tr>
