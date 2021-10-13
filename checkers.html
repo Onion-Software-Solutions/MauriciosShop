@@ -1,0 +1,84 @@
+<html>
+<header>
+
+<style>
+.cellblac {
+  background:black;
+}
+</style>
+
+
+
+<script>
+function square()
+{
+  vcount=0;
+  //12 peices per player
+  invert="style='background:black;'";
+  
+  tmp="<table border='1' width='600px' height='600px'>";
+  
+  for( line = 0; line <8; line++)
+  {
+       if( vcount == 0 )
+	   {
+	     invert="style='background:black;'";
+	     vcount=1;
+	   }else
+	   {
+	     invert="style='background:white;'";
+	     vcount=0;
+	   }
+	   
+	   tmp += "<tr>";
+	   for( col = 0; col <8; col++)
+       {
+	        if( vcount == 0 )
+	        {
+	          invert="style='background:black;'";
+	          vcount=1;
+	        }else
+	        {
+	          invert="style='background:white;'";
+	          vcount=0;
+	        }
+		    
+	        tmp+= "<td " + invert + " ></td>";
+	   }
+       tmp+="</tr>";	
+        
+        //tmp+="<tr><td " + invert + " >1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>";
+  }
+  tmp += "</table>";
+  
+  
+  
+  document.getElementById("wholemeal").innerHTML=tmp;
+  
+}
+</script>
+
+
+</header>
+<body onload="square();">
+
+
+<div id="wholemeal">
+
+</div>
+<!--
+<table border="1" width="600px" height="600px">
+<tr> <td> 1                           </td> <td> 2 </td> <td> 3 </td><td> 4 </td><td> 5 </td><td> 6 </td> <td> 7 </td><td> 8 </td> </tr>
+<tr> <td style="background:black;"> 2 </td><td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tr> <td> 3                           </td> <td> </td><td></td> <td></td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tr> <td style="background:black;"> 4 </td><td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tr> <td> 5                           </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tr> <td style="background:black;"> 6 </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tr> <td> 7                           </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+<tr> <td style="background:black;"> 8 </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>
+</table>
+-->
+
+
+</body>
+</html>
